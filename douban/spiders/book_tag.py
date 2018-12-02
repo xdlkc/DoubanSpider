@@ -3,7 +3,10 @@ import scrapy
 
 
 class BooktagSpider(scrapy.Spider):
-    name = 'BookTag'
+    """
+    豆瓣图书爬虫：未开始
+    """
+    name = 'book_tag'
     allowed_domains = []
     start_urls = ['https://book.douban.com/tag/?view=type']
 

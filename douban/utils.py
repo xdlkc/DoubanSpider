@@ -1,9 +1,10 @@
 import logging
+
 import redis
 from mysql.connector import pooling
+
 from douban.db_config import MYSQL_CONFIG, REDIS_CONFIG
 from douban.enums import RedisKeyEnum
-from douban.aop import consume_time
 
 
 class MysqlManager(object):
@@ -100,5 +101,11 @@ def put_movie_ids_to_redis():
     pipe.execute()
 
 
-if __name__ == '__main__':
-    put_movie_ids_to_redis()
+def put_movie_page_to_redis():
+    rdc = RedisManager().rdc
+    pipe = rdc.pipeline()
+    movie_set = rdc.hkeys(RedisKeyEnum.movie_id_hash_keys.value)
+    for id_result in movie_set:
+        pipe.hset('movie_comment_page', id_result, 0)
+    pipe.execute()
+

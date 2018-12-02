@@ -7,7 +7,7 @@ from scrapy import signals
 
 class Latencies(object):
     """
-    An extension that measures throughput and latencies.
+    计算爬取速率的扩展
     """
 
     @classmethod

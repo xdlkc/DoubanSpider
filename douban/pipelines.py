@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 
+import logging
+
+from douban.enums import *
 from douban.items import *
 # Define your item pipelines here
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 from douban.utils import MysqlManager, format_date, RedisManager
-from douban.enums import *
-import logging
 
 
 class DoubanPipeline(object):
@@ -27,9 +28,15 @@ class DoubanPipeline(object):
             msg = "crawl err,item:{}, e:{}".format(item, e)
             print(msg)
             logging.error(msg)
+            # 抓取出现异常，发送停止信号
             spider.crawler.engine.close_spider(spider, 'process_movie_item err:{}'.format(e))
 
     def process_evaluation_item(self, item):
+        """
+        处理影评item
+        :param item:
+        :return:
+        """
         douban_comment_id = item['douban_comment_id']
 
         movie_id = item['movie_id']
@@ -46,6 +53,12 @@ class DoubanPipeline(object):
         self.rm.rdc.sadd(RedisKeyEnum.over_movie_comment_set.value, douban_comment_id)
 
     def process_movie_item(self, item, spider):
+        """
+        处理影片item
+        :param item:
+        :param spider:
+        :return:
+        """
         ins_sql = 'insert into movie (score, title, url, directors, actors, cover_url, douban_movie_id) ' \
                   'values (%s,%s,%s,%s,%s,%s,%s);'
         douban_movie_id = item['douban_movie_id']

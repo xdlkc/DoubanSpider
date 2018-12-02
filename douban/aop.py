@@ -2,6 +2,11 @@ import time
 
 
 def consume_time(func):
+    """
+    计算函数耗时切面（毫秒）
+    :param func:
+    :return:
+    """
     def temp_fun(*args, **args2):
         t0 = int(time.time() * 1000)
         back = func(*args, **args2)

@@ -27,13 +27,13 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-# DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 1
 # The download delay setting will honor only one of:
 # CONCURRENT_REQUESTS_PER_DOMAIN = 16
 # CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-COOKIES_ENABLED = False
+# COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 # TELNETCONSOLE_ENABLED = False
@@ -120,8 +120,8 @@ USER_AGENT_LIST = [
     "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0)",
     "Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; en) Presto/2.9.168 Version/11.52",
     ""]
-# today = datetime.now()
-# log_file_path = "log/{}-{}-{}-{}.log".format(today.year, today.month, today.day, today.hour)
-# LOG_LEVEL = 'INFO'
-# LOG_FILE = log_file_path
+today = datetime.now()
+log_file_path = "log/{}-{}-{}-{}.log".format(today.year, today.month, today.day, today.hour)
+LOG_LEVEL = 'INFO'
+LOG_FILE = log_file_path
 LATENCIES_INTERVAL = 5

@@ -1,3 +1,6 @@
 https://movie.douban.com/j/chart/top_list_count?type=2&interval_id=100:90
 https://movie.douban.com/chart
 https://movie.douban.com/j/chart/top_list?type=26&interval_id=30:20&start=0&limit=80
+
+https://movie.douban.com/subject/27110296/comments?start=20&limit=20&sort=new_score&status=P
+https://movie.douban.com/j/new_search_subjects?sort=U&range=0,10&tags=&start=40&genres=%E5%89%A7%E6%83%85
