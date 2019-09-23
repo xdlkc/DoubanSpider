@@ -125,3 +125,5 @@ log_file_path = "log/{}-{}-{}-{}.log".format(today.year, today.month, today.day,
 LOG_LEVEL = 'INFO'
 LOG_FILE = log_file_path
 LATENCIES_INTERVAL = 5
+
+HTTPERROR_ALLOWED_CODES = [403, 404]

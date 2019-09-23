@@ -30,7 +30,7 @@ class MovieSpider(scrapy.Spider):
 
     # @consume_time
     def parse(self, response):
-        print(response.url)
+        s = response.url
         movie_jsons = json.loads(response.text)
         if 'data' not in movie_jsons or len(movie_jsons['data']) == 0:
             ks = re.findall('tags=(.*),(.*)&start', s)[0]
@@ -57,6 +57,6 @@ class MovieSpider(scrapy.Spider):
 
 
 if __name__ == '__main__':
-    s = 'https://movie.douban.com/j/new_search_subjects?sort=U&range=0,10&tags=电影,电视剧&start=0'
-    r = re.findall('tags=(.*)&start', s)
-    print(r)
+    with open('/Users/zhangjunbo/Code/PYTHON/douban/douban/url_list.txt') as f:
+        for i in f:
+            print(type(i))

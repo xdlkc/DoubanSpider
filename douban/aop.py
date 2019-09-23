@@ -7,6 +7,7 @@ def consume_time(func):
     :param func:
     :return:
     """
+
     def temp_fun(*args, **args2):
         t0 = int(time.time() * 1000)
         back = func(*args, **args2)
